@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\restaurantApp",
+    "\\restaurantApp\\src",
+    "\\restaurantApp\\src\\app",
+    "\\restaurantApp\\src\\app\\orders",
+    "\\restaurantApp\\src\\app\\orders\\order",
+    "\\restaurantApp\\src\\app\\orders\\order-item",
+    "\\restaurantApp\\src\\app\\shared"
+  ],
+  "SelectedNode": "\\restaurantApp\\src\\app\\orders\\order\\order.component.ts",
+  "PreviewInSolutionExplorer": false
+}
