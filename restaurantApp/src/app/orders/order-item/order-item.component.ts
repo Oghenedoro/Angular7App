@@ -48,9 +48,9 @@ export class OrderItemComponent implements OnInit {
      
     }
   }
-
+  //parseFloat(this.restaurantService.formData.gTotal.toFixed(2));
   updateTotalField() {
-    this.orderItemForm.total = this.orderItemForm.prix * this.orderItemForm.quantity;
+    this.orderItemForm.total = parseFloat((this.orderItemForm.prix * this.orderItemForm.quantity).toFixed(2));
   }
 
   getFoodItems() {

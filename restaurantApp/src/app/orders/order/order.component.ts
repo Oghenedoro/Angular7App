@@ -41,7 +41,8 @@ export class OrderComponent implements OnInit {
       idCommand: 0,
       refCommande: 0,
       idClient: 0,
-      payMethod: ''
+      payMethod: '',
+      gTotal: 0
  
     };
     this.restaurantService.orderItems=[];
@@ -53,10 +54,20 @@ export class OrderComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.width = "50%";
     dialogConfig.data = { orderItemindex, idCommand };
-    this.dialog.open(OrderItemComponent, dialogConfig)
+    this.dialog.open(OrderItemComponent, dialogConfig).afterClosed().subscribe(res => {
+      this.updateGrandTotal();
+    });
   }
 
   onDeletOrderItem(ligneCmdId:number, i:number) {
     this.restaurantService.orderItems.splice(i, 1);
+    this.updateGrandTotal();
+  }
+
+  updateGrandTotal() {
+    this.restaurantService.formData.gTotal = this.restaurantService.orderItems.reduce((prev, curr) => {
+      return prev + curr.total;
+    }, 0);
+    this.restaurantService.formData.gTotal = parseFloat(this.restaurantService.formData.gTotal.toFixed(2));
   }
 }

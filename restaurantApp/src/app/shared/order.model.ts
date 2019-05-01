@@ -3,5 +3,6 @@ export class Order {
   refCommande: number;
   idClient: number;
   payMethod: string;
+  gTotal: number;
 
 }
