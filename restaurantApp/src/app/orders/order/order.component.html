@@ -63,6 +63,7 @@
             <td>{{item.total}}</td>
             <td>
               <a class="btn btn-sm btn-info text-white" (click)="AddOrEditOrderItem(i,restaurantService.formData.idCommand)"> <i class="fa fa-pencil"></i></a>
+              <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeletOrderItem(item.idLigneCommande,i)"> <i class="fa fa-trash"></i></a>
             </td>
           </tr>
 

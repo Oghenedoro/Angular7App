@@ -9,6 +9,6 @@
     "\\restaurantApp\\src\\app\\orders\\order-item",
     "\\restaurantApp\\src\\app\\shared"
   ],
-  "SelectedNode": "\\restaurantApp\\src\\app\\orders\\order\\order.component.ts",
+  "SelectedNode": "\\restaurantApp\\src\\app\\shared\\food-item.model.ts",
   "PreviewInSolutionExplorer": false
 }

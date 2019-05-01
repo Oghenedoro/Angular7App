@@ -56,4 +56,7 @@ export class OrderComponent implements OnInit {
     this.dialog.open(OrderItemComponent, dialogConfig)
   }
 
+  onDeletOrderItem(ligneCmdId:number, i:number) {
+    this.restaurantService.orderItems.splice(i, 1);
+  }
 }
