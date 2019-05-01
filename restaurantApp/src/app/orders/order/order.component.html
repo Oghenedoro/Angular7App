@@ -56,7 +56,7 @@
           <tr *ngIf="restaurantService.orderItems.length==0">
             <td class="font-italic text-center" colspan="4">No item selected for this order</td>
           </tr>
-          <tr *ngFor="let item of restaurantService.orderItems; let i of index">
+          <tr *ngFor="let item of restaurantService.orderItems; let i = index;">
             <td>{{item.itemName}}</td>
             <td>{{item.prix}}</td>
             <td>{{item.quantity}}</td>

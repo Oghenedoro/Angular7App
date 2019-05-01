@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Order } from './order.model';
 import { OrderItem } from './order-item.model';
+import { FoodItem } from './food-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class RestaurantService {
 
   formData: Order;
   orderItems: OrderItem[];
+  foodList: FoodItem[];
 
   constructor(private http: HttpClient) { }
 

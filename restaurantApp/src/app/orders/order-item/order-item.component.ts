@@ -3,6 +3,7 @@ import { RestaurantService } from '../../shared/restaurant.service';
 import { OrderItem } from '../../shared/order-item.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { NgForm } from '@angular/forms';
+import { FoodItem } from '../../shared/food-item.model';
 
 @Component({
   selector: 'app-order-item',
@@ -11,7 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 export class OrderItemComponent implements OnInit {
 
-  private orderItemsList: OrderItem[];
+  private foodList: FoodItem[];
   private orderItemForm: OrderItem;
   private isValid: boolean=true;  
 
@@ -20,35 +21,31 @@ export class OrderItemComponent implements OnInit {
     private restaurantService: RestaurantService) { }
 
   ngOnInit() {
-    this.getOrderItems();
-   
-    this.orderItemForm = {
-      idLigneCommande: 0,
-      idCommand: this.data.idCommand,
-      refCommande: 0,
-      prix: 0,
-      itemName: '',
-      quantity: 0,
-      total: 0
+    this.getFoodItems();
 
+    if (this.data.orderItemindex == null)
+      this.orderItemForm = {
+        idLigneCommande: null,
+        idCommand: this.data.idCommand,
+        refCommande: 0,
+        prix: 0,
+        itemName: '',
+        quantity: 0,
+        total: 0
+      }
+    else {
+    this.orderItemForm = Object.assign({}, this.restaurantService.orderItems[this.data.orderItemindex]);
     }
-    this.updateTotalField();
   }
   updateOrderItemFields(pp) {
     if (pp.selectedIndex == 0) {
       this.orderItemForm.prix = 0;
       this.orderItemForm.itemName = '';
-      this.orderItemForm.total = 0;
-      this.orderItemForm.quantity = 0;
-
-
-    } else {
-      this.orderItemForm.prix = this.orderItemsList[pp.selectedIndex - 1].prix;
-      this.orderItemForm.itemName = this.orderItemsList[pp.selectedIndex - 1].itemName;
-      this.orderItemForm.total = this.orderItemsList[pp.selectedIndex - 1].total;
-      this.orderItemForm.quantity = this.orderItemsList[pp.selectedIndex - 1].quantity;
      
-      
+    } else {
+      this.orderItemForm.prix = this.foodList[pp.selectedIndex - 1].prix;
+      this.orderItemForm.itemName = this.foodList[pp.selectedIndex - 1].name;
+     
     }
   }
 
@@ -56,10 +53,10 @@ export class OrderItemComponent implements OnInit {
     this.orderItemForm.total = this.orderItemForm.prix * this.orderItemForm.quantity;
   }
 
-  getOrderItems() {
-    this.restaurantService.getOrderItems().subscribe(
+  getFoodItems() {
+    this.restaurantService.getFoodItems().subscribe(
       res => {
-        this.orderItemsList = res as OrderItem[];
+        this.foodList = res as FoodItem[];
        },
       error => { console.log("Error occurred !") },
       () => { console.log("Successful !") }
