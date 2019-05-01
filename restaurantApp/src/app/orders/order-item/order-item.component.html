@@ -2,35 +2,47 @@
 <hr />
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
   <input type="hidden" name="idLigneCommande" #idLigneCommande="ngModel" [(ngModel)]="orderItemForm.idLigneCommande" />
-  <input type="hidden" name="idCommand" #idCommand="ngModel" [(ngModel)]="orderItemForm.idCommand">  
+  <input type="hidden" name="idCommand" #idCommand="ngModel" [(ngModel)]="orderItemForm.idCommand">
 
   <div class="form-group">
-    <label>Menu </label>
+    <label>Select food items </label>
     <select class="form-control" name="itemName" #itemName="ngModel" [(ngModel)]="orderItemForm.itemName" (change)="updateOrderItemFields($event.target)">
       <option value="0">-select-</option>
-      <option *ngFor="let item of orderItemsList" value="{{item.idLigneCommande}}">{{item.itemName}}</option>
+      <option *ngFor="let item of orderItemsList" value="{{item.itemName}}"> {{item.itemName}}</option>
     </select>
   </div>
+
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
         <label>Prix</label>
-        <input class="form-control" name="prix" #prix="ngModel" [(ngModel)]="orderItemForm.prix " />
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">£</div>
+          </div>
+          <input class="form-control" name="prix" #prix="ngModel" [(ngModel)]="orderItemForm.prix " />
+        </div>
       </div>
     </div>
+
     <div class="col-md-6">
       <div class="form-group">
         <label>quantity</label>
         <input class="form-control" name="quantity" #quantity="ngModel" [(ngModel)]="orderItemForm.quantity" (keyup)="updateTotalField()" />
       </div>
     </div>
-    <div class="form-group">
-      <label>total</label>
-      <input class="form-control" name="total" #total="ngModel" [(ngModel)]="orderItemForm.total " />
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>total</label>
+        <input class="form-control" name="total" #total="ngModel" [(ngModel)]="orderItemForm.total " />
+      </div>
     </div>
   </div>
+
   <div class="form-group">
     <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i> Submit</button>
     <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]><i class="fa fa-close"></i> Close</button>
   </div>
+
 </form>

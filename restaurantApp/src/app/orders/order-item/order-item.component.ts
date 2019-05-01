@@ -31,16 +31,22 @@ export class OrderItemComponent implements OnInit {
       total: 0
 
     }
+    this.updateTotalField();
   }
   updateOrderItemFields(pp) {
     if (pp.selectedIndex == 0) {
       this.orderItemForm.prix = 0;
       this.orderItemForm.itemName = '';
+      this.orderItemForm.total = 0;
+      this.orderItemForm.quantity = 0;
+
+
     } else {
       this.orderItemForm.prix = this.orderItemsList[pp.selectedIndex - 1].prix;
+      this.orderItemForm.itemName = this.orderItemsList[pp.selectedIndex - 1].itemName;
       this.orderItemForm.total = this.orderItemsList[pp.selectedIndex - 1].total;
       this.orderItemForm.quantity = this.orderItemsList[pp.selectedIndex - 1].quantity;
-      this.orderItemForm.itemName = this.orderItemsList[pp.selectedIndex - 1].itemName;
+     
       
     }
   }

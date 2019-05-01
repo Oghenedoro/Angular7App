@@ -17,6 +17,7 @@ export class OrderComponent implements OnInit {
   private orderForm: OrderItem;
   private orderItems: OrderItem[];
   private orderItemForm: OrderItem;
+  private  selected : boolean= true;
 
   constructor(private restaurantService: RestaurantService, private dialog: MatDialog) { }
 
