@@ -6,7 +6,8 @@
 
   <div class="form-group">
     <label>Select food items </label>
-    <select class="form-control" name="itemName" #itemName="ngModel" [(ngModel)]="orderItemForm.itemName" (change)="updateOrderItemFields($event.target)">
+    <select class="form-control" name="itemName" #itemName="ngModel" [(ngModel)]="orderItemForm.itemName"
+      (change)="updateOrderItemFields($event.target)" [class.is-invalid]="!isinvalid && orderItemForm.itemName==''">
       <option value="0">-select-</option>
       <option *ngFor="let item of orderItemsList" value="{{item.itemName}}"> {{item.itemName}}</option>
     </select>
@@ -28,7 +29,8 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>quantity</label>
-        <input class="form-control" name="quantity" #quantity="ngModel" [(ngModel)]="orderItemForm.quantity" (keyup)="updateTotalField()" />
+        <input class="form-control" name="quantity" #quantity="ngModel" [(ngModel)]="orderItemForm.quantity"
+               (keyup)="updateTotalField()" [class.is-invalid]="!isinvalid && orderItemForm.quantity==0 "/>
       </div>
     </div>
 

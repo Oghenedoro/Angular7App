@@ -13,6 +13,7 @@ export class OrderItemComponent implements OnInit {
 
   private orderItemsList: OrderItem[];
   private orderItemForm: OrderItem;
+  private isValid: boolean=true;  
 
   constructor(@Inject(MAT_DIALOG_DATA) public data,
     public dialogRef: MatDialogRef<OrderItemComponent>,
@@ -66,10 +67,21 @@ export class OrderItemComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-  
-        this.restaurantService.orderItems.push(form.value);
-        this.dialogRef.close();
+    if (this.validateForm(form.value)) {
+
+      this.restaurantService.orderItems.push(form.value);
+      this.dialogRef.close();
+    }
+        
   }
 
+  validateForm(orderItemForm: OrderItem) {
+    this.isValid = true;
+    if (orderItemForm.itemName == '')
+      this.isValid = false;
+    else if (this.orderItemForm.quantity == 0)
+      this.isValid = false;
+    return this.isValid;
+  }
  }
 
