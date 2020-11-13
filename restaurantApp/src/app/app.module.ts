@@ -6,7 +6,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog'; 
-
+import { map } from 'rxjs/operators'; 
 
 import { AppComponent } from './app.component';
 import { OrderItemComponent } from './orders/order-item/order-item.component';

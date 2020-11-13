@@ -1,4 +1,51 @@
-<p>
-  orders works!
-</p>
+<table class="table table-hover" id="tabOrder">
+   <h3 style="color: firebrick;">List of Orders</h3>
+  <thead>
+     <th>Ref Commande</th>
+     <th>Payment method</th>
+     <th>Grand total</th>
+     <th>Nom Client</th>
+     <th>
+        <a class="btn btn-outline-success" routerLink="/order"><i class="fa fa-plus-square"></i>create new</a>
+     </th>
+     <th><button class="btn btn-danger btn-block" (click)="downloadPDF()">Download PDF</button></th>
+  </thead>
+  <tbody *ngIf="orderList">
+  
+    <tr *ngFor="let item of orderList">
+      <td (click)="openForEditOrder(item.idCommand)">{{item.refCommande}}</td>
+      <td>{{item.payMethod}}</td>
+      <td>{{item.grandTotal}}</td>
+      <td>{{item.nom}}</td>
+     </tr>
+  </tbody>
+</table>
 
+<h3 style="color: blue;">List of Order Items</h3>
+<table class="table table-hover" id="tabOrderItems">
+    <thead>   
+   <th>Ref commande</th>
+   <th>Item Name</th>
+   <th>Prix</th>
+   <th>Quantity</th>
+   <th>Total</th>
+   <th>
+      <a class="btn btn-outline-success" routerLink="/order"><i class="fa fa-plus-square"></i>create new</a>
+   </th>
+  <th> <button class="btn btn-success btn-block" (click)="downloadPDF2()">Download PDF</button></th>
+</thead>
+<tbody *ngIf="orderDtails">
+  <tr *ngFor="let it of orderDtails">
+    <td>{{it.refCommande}}</td>
+    <td>{{it.itemName}}</td>
+    <td>{{it.prix}}</td>
+    <td>{{it.quantity}}</td>
+    <td>{{it.total}}</td>
+    <td>
+      <a class="btn text-danger" (click)="onOrderItemDelete(it.idLigneCommande)"><i class="fa fa-trash fa-lg"></i></a>
+    </td>
+   </tr>
+</tbody>
+</table>
+<div>
+</div>

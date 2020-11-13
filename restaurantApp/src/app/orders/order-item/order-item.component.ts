@@ -11,7 +11,7 @@ import { FoodItem } from '../../shared/food-item.model';
   styles: []
 })
 export class OrderItemComponent implements OnInit {
-
+  
   private foodList: FoodItem[];
   private orderItemForm: OrderItem;
   private isValid: boolean=true;  
@@ -31,6 +31,7 @@ export class OrderItemComponent implements OnInit {
         prix: 0,
         itemName: '',
         quantity: 0,
+        idFoodItem: 0,
         total: 0
       }
     else {
@@ -40,19 +41,18 @@ export class OrderItemComponent implements OnInit {
   updateOrderItemFields(pp) {
     if (pp.selectedIndex == 0) {
       this.orderItemForm.prix = 0;
-      this.orderItemForm.itemName = '';
-     
+      this.orderItemForm.itemName = '';     
     } else {
       this.orderItemForm.prix = this.foodList[pp.selectedIndex - 1].prix;
       this.orderItemForm.itemName = this.foodList[pp.selectedIndex - 1].name;
-     
+
     }
   }
   //parseFloat(this.restaurantService.formData.gTotal.toFixed(2));
   updateTotalField() {
     this.orderItemForm.total = parseFloat((this.orderItemForm.prix * this.orderItemForm.quantity).toFixed(2));
   }
-
+ 
   getFoodItems() {
     this.restaurantService.getFoodItems().subscribe(
       res => {
@@ -69,6 +69,7 @@ export class OrderItemComponent implements OnInit {
         this.restaurantService.orderItems.push(form.value);
       else {
         this.restaurantService.orderItems[this.data.orderItemindex] = form.value;
+        
       }
       this.dialogRef.close();
     }

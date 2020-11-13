@@ -15,15 +15,6 @@ export class FoodItemComponent implements OnInit {
   constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit() {
-    this.getFoodItems();
-  }
 
-
-  getFoodItems() {
-    this.restaurantService.getFoodItems().subscribe(
-      data => { this.foodItems = data as FoodItem[]},
-      error => { console.log("Error occured ! ") },
-      () => { console.log("Successful") }
-    );
   }
 }

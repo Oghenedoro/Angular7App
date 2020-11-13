@@ -5,10 +5,11 @@
     "\\restaurantApp\\src",
     "\\restaurantApp\\src\\app",
     "\\restaurantApp\\src\\app\\orders",
+    "\\restaurantApp\\src\\app\\orders\\food-item",
     "\\restaurantApp\\src\\app\\orders\\order",
     "\\restaurantApp\\src\\app\\orders\\order-item",
     "\\restaurantApp\\src\\app\\shared"
   ],
-  "SelectedNode": "\\restaurantApp\\src\\app\\shared\\food-item.model.ts",
+  "SelectedNode": "\\restaurantApp\\src\\app\\shared\\restaurant.service.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -5,5 +5,6 @@ export class OrderItem {
   prix: number;
   quantity: number;
   itemName: string;
+  idFoodItem: number;
   total: number;
 }

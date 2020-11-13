@@ -1,4 +1,5 @@
 export class Client {
-  id: number;
-  nom :string
+  idClient: number;
+  nom: string;
+
 }
